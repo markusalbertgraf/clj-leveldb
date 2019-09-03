@@ -25,17 +25,17 @@
   (System/setProperty "library.leveldbjni.path" tmp-dir))
 
 (import
-  '[org.fusesource.leveldbjni
-    JniDBFactory]
-  '[org.iq80.leveldb
-    WriteBatch
-    DBIterator
-    Options
-    ReadOptions
-    WriteOptions
-    CompressionType
-    DB
-    Range])
+ '[org.iq80.leveldb.impl
+   Iq80DBFactory]
+ '[org.iq80.leveldb
+   WriteBatch
+   DBIterator
+   Options
+   ReadOptions
+   WriteOptions
+   CompressionType
+   DB
+   Range])
 
 ;;;
 
@@ -262,31 +262,31 @@
          error-if-exists? false}
     :as options}]
   (->LevelDB
-    (.open JniDBFactory/factory
-      (io/file directory)
-      (let [opts (Options.)]
-        (doseq [[k v] options]
-          (when (and v (contains? option-setters k))
-            ((option-setters k) opts v)))
-        opts))
-    key-decoder
-    key-encoder
-    val-decoder
-    val-encoder))
+   (.open Iq80DBFactory/factory
+          (io/file directory)
+          (let [opts (Options.)]
+            (doseq [[k v] options]
+              (when (and v (contains? option-setters k))
+                ((option-setters k) opts v)))
+            opts))
+   key-decoder
+   key-encoder
+   val-decoder
+   val-encoder))
 
 (defn destroy-db
   "Destroys the database at the specified `directory`."
   [directory]
-  (.destroy JniDBFactory/factory
-    (io/file directory)
-    (Options.)))
+  (.destroy Iq80DBFactory/factory
+            (io/file directory)
+            (Options.)))
 
 (defn repair-db
   "Repairs the database at the specified `directory`."
   [directory]
-  (.repair JniDBFactory/factory
-    (io/file directory)
-    (Options.)))
+  (.repair Iq80DBFactory/factory
+           (io/file directory)
+           (Options.)))
 
 ;;;
 

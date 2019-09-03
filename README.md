@@ -1,4 +1,5 @@
-This is a self-contained wrapper around [LevelDB](https://code.google.com/p/leveldb/), which provides all the necessary binaries via [leveldbjni](https://github.com/fusesource/leveldbjni).
+This is a self-contained wrapper around a Java port of [LevelDB](https://code.google.com/p/leveldb/) [dain/leveldb](https://github.com/dain/leveldb).
+This is the code from Factual with the LevelDB dependency changed.
 
 ### basic usage
 
