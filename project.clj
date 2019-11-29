@@ -1,5 +1,5 @@
-(defproject factual/clj-leveldb "0.1.2"
-  :description "an idiomatic wrapper for LevelDB"
+(defproject org.clojars.markus/clj-leveldb "0.1.2.1"
+  :description "an idiomatic wrapper for java only LevelDB forked from factual"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[byte-streams "0.2.4"]
